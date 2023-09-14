@@ -4,6 +4,7 @@ import Tests from "../pages/tests";
 
 import Profile from "../pages/profile";
 import { BottomNavLayout } from "../components/layout/BottomNavLayout";
+import NotFound from "../pages/notFound";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -27,6 +28,7 @@ const Router = () => {
         },
       ],
     },
+    { path: "*", element: <NotFound /> },
   ]);
 
   return <RouterProvider router={router} />;
