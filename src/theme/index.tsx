@@ -1,6 +1,6 @@
 import { createTheme, ThemeProvider } from "@mui/material";
 
-const AppTheme: React.FunctionComponent<any> = ({ children }) => {
+const AppTheme = ({ children }) => {
   const theme = createTheme({
     typography: {
       fontFamily: "Vazirmatn",

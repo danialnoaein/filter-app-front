@@ -23,7 +23,7 @@ export const Main = () => {
         <BottomNavigation
           showLabels
           value={tab}
-          onChange={(event, newValue) => {
+          onChange={(_event, newValue) => {
             setTab(newValue);
             navigate("/");
           }}
