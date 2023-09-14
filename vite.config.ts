@@ -2,5 +2,5 @@ import { defineConfig } from "vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/filter-app-front/",
+  // base: "/filter-app-front/",
 });
