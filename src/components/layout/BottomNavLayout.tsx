@@ -28,7 +28,7 @@ export const BottomNavLayout = () => {
       >
         <Typography style={{ marginRight: "8px" }}>فیلتر</Typography>
       </div>
-      <div>
+      <div style={{ padding: "8px" }}>
         <Outlet />
       </div>
       <div style={{ position: "fixed", bottom: "0", width: "100%" }}>

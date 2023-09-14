@@ -1,117 +1,138 @@
+import { AccessAlarm } from "@mui/icons-material";
 import {
   Button,
   Card,
   CardActions,
   CardContent,
+  CardMedia,
   Typography,
 } from "@mui/material";
 
 const Tests = () => {
   return (
     <>
-      <Typography
-        variant='h5'
-        fontStyle={"bold"}
-      >
-        تست های سلامت روان
-      </Typography>
-      <Typography variant='h6'>اول خودت رو بشناس، بعد تصمیم بگیر </Typography>
-
+      <div style={{ marginBottom: "8px" }}>
+        <Typography
+          variant='h5'
+          sx={{ fontWeight: "bold" }}
+        >
+          تست های سلامت روان
+        </Typography>
+        <Typography>اول خودت رو بشناس، بعد تصمیم بگیر </Typography>
+      </div>
       <div>
-        <div style={{ display: "flex" }}>
-          <Card sx={{ width: 275 }}>
-            <CardContent>
+        <div style={{ overflow: "auto", whiteSpace: "nowrap" }}>
+          <Card
+            style={{
+              display: "inline-block",
+              marginLeft: "8px",
+              width: "180px",
+            }}
+          >
+            <CardMedia
+              sx={{ height: 140 }}
+              image='https://nextluxury.com/wp-content/uploads/couple-not-talking-to-each-other-after-quarrel.jpg'
+            />
+            <CardContent sx={{ paddingBottom: "0px" }}>
               <Typography
-                sx={{ fontSize: 14 }}
-                color='text.secondary'
-                gutterBottom
+                variant='body2'
+                sx={{ fontWeight: "bold" }}
               >
-                Word of the Day
+                طرحواره رها شدگی
               </Typography>
-              <Typography
-                variant='h5'
-                component='div'
+
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  flexWrap: "wrap",
+                  fontSize: "0.8rem",
+                  margin: "8px 0",
+                  color: "#999",
+                }}
               >
-                benev
-              </Typography>
-              <Typography
-                sx={{ mb: 1.5 }}
-                color='text.secondary'
-              >
-                adjective
-              </Typography>
-              <Typography variant='body2'>
-                well meaning and kindly.
-                <br />
-                {'"a benevolent smile"'}
-              </Typography>
+                <AccessAlarm />
+                <span>۲ دقیقه</span>
+              </div>
             </CardContent>
             <CardActions>
-              <Button size='small'>Learn More</Button>
+              <Button size='small'>شروع</Button>
             </CardActions>
           </Card>
 
-          <Card sx={{ width: 275 }}>
-            <CardContent>
+          <Card
+            style={{
+              display: "inline-block",
+              marginLeft: "8px",
+              width: "180px",
+            }}
+          >
+            <CardMedia
+              sx={{ height: 140 }}
+              image='https://nextluxury.com/wp-content/uploads/couple-not-talking-to-each-other-after-quarrel.jpg'
+            />
+            <CardContent sx={{ paddingBottom: "0px" }}>
               <Typography
-                sx={{ fontSize: 14 }}
-                color='text.secondary'
-                gutterBottom
+                variant='body2'
+                sx={{ fontWeight: "bold" }}
               >
-                Word of the Day
+                طرحواره رها شدگی
               </Typography>
-              <Typography
-                variant='h5'
-                component='div'
+
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  flexWrap: "wrap",
+                  fontSize: "0.8rem",
+                  margin: "8px 0",
+                  color: "#999",
+                }}
               >
-                benev
-              </Typography>
-              <Typography
-                sx={{ mb: 1.5 }}
-                color='text.secondary'
-              >
-                adjective
-              </Typography>
-              <Typography variant='body2'>
-                well meaning and kindly.
-                <br />
-                {'"a benevolent smile"'}
-              </Typography>
+                <AccessAlarm />
+                <span>۲ دقیقه</span>
+              </div>
             </CardContent>
             <CardActions>
-              <Button size='small'>Learn More</Button>
+              <Button size='small'>شروع</Button>
             </CardActions>
           </Card>
 
-          <Card sx={{ width: 275 }}>
-            <CardContent>
+          <Card
+            style={{
+              display: "inline-block",
+              marginLeft: "8px",
+              width: "180px",
+            }}
+          >
+            <CardMedia
+              sx={{ height: 140 }}
+              image='https://nextluxury.com/wp-content/uploads/couple-not-talking-to-each-other-after-quarrel.jpg'
+            />
+            <CardContent sx={{ paddingBottom: "0px" }}>
               <Typography
-                sx={{ fontSize: 14 }}
-                color='text.secondary'
-                gutterBottom
+                variant='body2'
+                sx={{ fontWeight: "bold" }}
               >
-                Word of the Day
+                طرحواره رها شدگی
               </Typography>
-              <Typography
-                variant='h5'
-                component='div'
+
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  flexWrap: "wrap",
+                  fontSize: "0.8rem",
+                  margin: "8px 0",
+                  color: "#999",
+                }}
               >
-                benev
-              </Typography>
-              <Typography
-                sx={{ mb: 1.5 }}
-                color='text.secondary'
-              >
-                adjective
-              </Typography>
-              <Typography variant='body2'>
-                well meaning and kindly.
-                <br />
-                {'"a benevolent smile"'}
-              </Typography>
+                <AccessAlarm />
+                <span>۲ دقیقه</span>
+              </div>
             </CardContent>
             <CardActions>
-              <Button size='small'>Learn More</Button>
+              <Button size='small'>شروع</Button>
             </CardActions>
           </Card>
         </div>
