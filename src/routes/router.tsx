@@ -5,6 +5,7 @@ import Tests from "../pages/tests";
 import Profile from "../pages/profile";
 import { BottomNavLayout } from "../components/layout/BottomNavLayout";
 import NotFound from "../pages/notFound";
+import SignIn from "../pages/signin";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -28,6 +29,7 @@ const Router = () => {
         },
       ],
     },
+    { path: "/signin", element: <SignIn /> },
     { path: "*", element: <NotFound /> },
   ]);
 

@@ -1,7 +1,8 @@
-import { createTheme, ThemeProvider } from "@mui/material";
+import { createTheme, Shadows, ThemeProvider } from "@mui/material";
 
 const AppTheme = ({ children }) => {
   const theme = createTheme({
+    shadows: Array(25).fill("none") as Shadows,
     typography: {
       fontFamily: "Vazirmatn",
     },
