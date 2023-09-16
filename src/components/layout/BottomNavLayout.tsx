@@ -4,12 +4,17 @@ import {
   BottomNavigationAction,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
 export const BottomNavLayout = () => {
   const [tab, setTab] = useState(0);
   const navigate = useNavigate();
+  useEffect(() => {
+    if (false) {
+      navigate("/signin");
+    }
+  }, [navigate]);
   return (
     <div style={{ padding: "56px 0" }}>
       <div
@@ -43,7 +48,7 @@ export const BottomNavLayout = () => {
         >
           <BottomNavigationAction
             label='خانه'
-            onClick={() => navigate("/home")}
+            onClick={() => navigate("/")}
             icon={<Apps />}
           />
           <BottomNavigationAction

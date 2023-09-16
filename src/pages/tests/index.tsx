@@ -54,7 +54,7 @@ const Tests = () => {
   const navigate = useNavigate();
 
   const onClickGoToTest = (id: number) => {
-    navigate(`/test/${id}`);
+    navigate(`/app/test/${id}`);
   };
   return (
     <>
