@@ -6,26 +6,32 @@ import { BottomNavLayout } from "../components/layout/BottomNavLayout";
 import NotFound from "../pages/notFound";
 import SignIn from "../pages/signin";
 import Test from "../pages/tests/test";
+import { PrivatePageLayout } from "../components/layout/PrivatePageLayout";
 
 const Router = () => {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <BottomNavLayout />,
+      element: <PrivatePageLayout />,
       errorElement: <NotFound />,
       children: [
         {
-          path: "",
-          index: true,
-          element: <Home />,
-        },
-        {
-          path: "tests",
-          element: <Tests />,
-        },
-        {
-          path: "profile",
-          element: <Profile />,
+          element: <BottomNavLayout />,
+          children: [
+            {
+              path: "",
+              index: true,
+              element: <Home />,
+            },
+            {
+              path: "tests",
+              element: <Tests />,
+            },
+            {
+              path: "profile",
+              element: <Profile />,
+            },
+          ],
         },
         { path: "test/:id", element: <Test /> },
       ],
