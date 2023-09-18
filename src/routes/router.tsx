@@ -7,6 +7,7 @@ import NotFound from "../pages/notFound";
 import SignIn from "../pages/signin";
 import Test from "../pages/tests/test";
 import { PrivatePageLayout } from "../components/layout/PrivatePageLayout";
+import Questions from "../pages/tests/questions";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -33,7 +34,11 @@ const Router = () => {
             },
           ],
         },
-        { path: "test/:id", element: <Test /> },
+        {
+          path: "test/:id",
+          element: <Test />,
+        },
+        { path: "test/:id/questions", element: <Questions /> },
       ],
     },
     { path: "/signin", element: <SignIn /> },

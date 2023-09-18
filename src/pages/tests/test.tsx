@@ -10,13 +10,13 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const Test = () => {
   const params = useParams();
-  console.log(params);
-
   const navigate = useNavigate();
   const onClickBack = () => {
     navigate(-1);
   };
-  const onClickStartTest = () => {};
+  const onClickStartTest = () => {
+    navigate(`/test/${params.id}/questions`);
+  };
 
   return (
     <div style={{ padding: "56px 0" }}>
