@@ -8,6 +8,7 @@ import SignIn from "../pages/signin";
 import Test from "../pages/tests/test";
 import { PrivatePageLayout } from "../components/layout/PrivatePageLayout";
 import Questions from "../pages/tests/questions";
+import TestResult from "../pages/tests/testResult";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -39,6 +40,7 @@ const Router = () => {
           element: <Test />,
         },
         { path: "test/:id/questions", element: <Questions /> },
+        { path: "test/:id/result", element: <TestResult /> },
       ],
     },
     { path: "/signin", element: <SignIn /> },

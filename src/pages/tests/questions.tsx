@@ -1,19 +1,22 @@
 import { ArrowForwardIos } from "@mui/icons-material";
 import {
+  Box,
   Button,
   Card,
   CardContent,
   FormControl,
   FormControlLabel,
+  LinearProgress,
   Radio,
   RadioGroup,
   Typography,
 } from "@mui/material";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Questions = () => {
   const navigate = useNavigate();
+  const params = useParams();
   const onClickBack = () => {
     navigate(-1);
   };
@@ -27,6 +30,7 @@ const Questions = () => {
     event.preventDefault();
 
     console.log("NEXT QUESTION");
+    navigate(`/test/${params.id}/result`);
   };
 
   return (
@@ -56,6 +60,20 @@ const Questions = () => {
         <Typography style={{ marginRight: "8px" }}>طرحواره رها شدگی</Typography>
       </div>
       <div style={{ padding: "8px" }}>
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Box sx={{ minWidth: 20 }}>
+            <Typography
+              variant='body2'
+              color='text.secondary'
+            >{`3/60`}</Typography>
+          </Box>
+          <Box sx={{ width: "100%", mr: 1 }}>
+            <LinearProgress
+              variant='determinate'
+              value={20}
+            />
+          </Box>
+        </Box>
         <Card
           style={{
             marginTop: "8px",
