@@ -33,7 +33,7 @@ const data: ITestsSection[] = [
       },
 
       {
-        id: 44,
+        id: 45,
         title: "طرحواره رهاشدگی",
         thumb:
           "https://cdn.psychologytoday.com/sites/default/files/styles/article-inline-half-caption/public/field_blog_entry_images/2022-08/shutterstock_524194495.jpg",
@@ -41,7 +41,7 @@ const data: ITestsSection[] = [
       },
 
       {
-        id: 44,
+        id: 46,
         title: "طرحواره رهاشدگی",
         thumb:
           "https://cdn.psychologytoday.com/sites/default/files/styles/article-inline-half-caption/public/field_blog_entry_images/2022-08/shutterstock_524194495.jpg",
@@ -54,7 +54,7 @@ const data: ITestsSection[] = [
     title: "تله های ذهنی",
     tests: [
       {
-        id: 44,
+        id: 47,
         title: "طرحواره رهاشدگی",
         thumb:
           "https://cdn.psychologytoday.com/sites/default/files/styles/article-inline-half-caption/public/field_blog_entry_images/2022-08/shutterstock_524194495.jpg",
@@ -62,7 +62,7 @@ const data: ITestsSection[] = [
       },
 
       {
-        id: 44,
+        id: 48,
         title: "طرحواره رهاشدگی",
         thumb:
           "https://cdn.psychologytoday.com/sites/default/files/styles/article-inline-half-caption/public/field_blog_entry_images/2022-08/shutterstock_524194495.jpg",
@@ -70,7 +70,7 @@ const data: ITestsSection[] = [
       },
 
       {
-        id: 44,
+        id: 49,
         title: "طرحواره رهاشدگی",
         thumb:
           "https://cdn.psychologytoday.com/sites/default/files/styles/article-inline-half-caption/public/field_blog_entry_images/2022-08/shutterstock_524194495.jpg",
@@ -96,8 +96,8 @@ const Tests = () => {
         </Typography>
         <Typography>اول خودت رو بشناس، بعد تصمیم بگیر </Typography>
       </div>
-      {data.map((section: ITestsSection) => (
-        <>
+      {data.map((section: ITestsSection, index: number) => (
+        <div key={index}>
           <Typography
             style={{
               fontWeight: "bold",
@@ -111,6 +111,7 @@ const Tests = () => {
             <div style={{ overflow: "auto", whiteSpace: "nowrap" }}>
               {section.tests.map((test: ITest) => (
                 <Card
+                  key={test.id}
                   style={{
                     display: "inline-block",
                     marginLeft: "8px",
@@ -164,7 +165,7 @@ const Tests = () => {
               ))}
             </div>
           </div>
-        </>
+        </div>
       ))}
     </>
   );
