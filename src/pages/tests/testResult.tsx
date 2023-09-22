@@ -57,7 +57,7 @@ const TestResult = () => {
               alt='issue'
             />
 
-            <Typography variant='body2'>
+            <Typography sx={{ fontWeight: "bold" }}>
               براساس بررسی و نتیجه تست شما، پیشنهاد می کنیم که با مشاور صحبت
               کنید
             </Typography>
