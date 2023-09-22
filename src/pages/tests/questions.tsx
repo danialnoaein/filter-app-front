@@ -40,7 +40,7 @@ const Questions = () => {
           position: "fixed",
           top: "0",
           width: "100%",
-          background: "#1E74FD",
+          background: "#1e88e5",
           color: "white",
           height: "56px",
           display: "flex",
