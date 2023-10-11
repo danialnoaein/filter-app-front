@@ -4,12 +4,12 @@ import {
   BottomNavigationAction,
   Typography,
 } from "@mui/material";
+import { useRouter } from "next/router";
 import { useState } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
 
 export const BottomNavLayout = () => {
   const [tab, setTab] = useState(0);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   return (
     <div style={{ padding: "56px 0" }}>

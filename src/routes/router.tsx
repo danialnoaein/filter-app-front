@@ -9,6 +9,8 @@ import Test from "../pages/tests/test";
 import { PrivatePageLayout } from "../components/layout/PrivatePageLayout";
 import Questions from "../pages/tests/questions";
 import TestResult from "../pages/tests/testResult";
+import Clinic from "../pages/clinic";
+import NewAppointment from "../pages/clinic/new-appointment";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -33,6 +35,10 @@ const Router = () => {
               path: "profile",
               element: <Profile />,
             },
+            {
+              path: "clinic",
+              element: <Clinic />,
+            },
           ],
         },
         {
@@ -41,6 +47,7 @@ const Router = () => {
         },
         { path: "test/:id/questions", element: <Questions /> },
         { path: "test/:id/result", element: <TestResult /> },
+        { path: "clinic/x", element: <NewAppointment /> },
       ],
     },
     { path: "/signin", element: <SignIn /> },
