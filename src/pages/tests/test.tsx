@@ -6,16 +6,17 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "next/navigation";
+import { useRouter } from "next/router";
 
 const Test = () => {
+  const router = useRouter();
   const params = useParams();
-  const navigate = useNavigate();
   const onClickBack = () => {
-    navigate(-1);
+    router.back();
   };
   const onClickStartTest = () => {
-    navigate(`/test/${params.id}/questions`);
+    router.push(`/test/${params.id}/questions`);
   };
 
   return (
@@ -35,10 +36,10 @@ const Test = () => {
         }}
       >
         <Button
-          variant='text'
+          variant="text"
           sx={{ color: "white" }}
           onClick={() => onClickBack()}
-          size='small'
+          size="small"
         >
           <ArrowForwardIos />
         </Button>
@@ -59,12 +60,12 @@ const Test = () => {
             }}
           >
             <img
-              src='https://mobilekit.bragherstudio.com/view29/assets/img/sample/photo/vector5.png '
+              src="https://mobilekit.bragherstudio.com/view29/assets/img/sample/photo/vector5.png "
               style={{ width: "54px" }}
-              alt=''
+              alt=""
             />
 
-            <Typography variant='body2'>
+            <Typography variant="body2">
               تا کنون
               <span style={{ fontWeight: "bold" }}> 544 نفر </span>
               در این تست شرکت کرده اند و از نتایج آن استفاده کردند
@@ -90,7 +91,7 @@ const Test = () => {
           />
 
           <CardContent sx={{ paddingBottom: "0px" }}>
-            <Typography variant='body2'>
+            <Typography variant="body2">
               طرحواره رهاشدگی یعنی اینکه فرد إحساس می کند که همه او را ترک می
               کنند و او همیشه تنهاست. افراد مبتلا به این نوع طرحواره دائم
               ارتباطات خود رابا دیگران بر سر موضوعات کم اهمیت قطع می کنند.
@@ -101,11 +102,11 @@ const Test = () => {
         </Card>
 
         <Button
-          variant='contained'
-          color='success'
+          variant="contained"
+          color="success"
           sx={{ marginTop: "8px", width: 1 }}
           onClick={() => onClickStartTest()}
-          size='small'
+          size="small"
         >
           شروع
         </Button>

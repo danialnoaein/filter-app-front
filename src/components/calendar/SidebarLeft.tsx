@@ -99,7 +99,7 @@ const SidebarLeft = (props: SidebarLeftType) => {
           },
         }}
       >
-        <Box sx={{ p: 6, width: "100%" }}>
+        {/* <Box sx={{ p: 6, width: "100%" }}>
           <Button
             fullWidth
             variant="contained"
@@ -111,8 +111,8 @@ const SidebarLeft = (props: SidebarLeftType) => {
           </Button>
         </Box>
 
-        <Divider sx={{ width: "100%", m: "0 !important" }} />
-        <DatePickerWrapper
+        <Divider sx={{ width: "100%", m: "0 !important" }} /> */}
+        {/* <DatePickerWrapper
           sx={{
             width: "100%",
             display: "flex",
@@ -124,7 +124,7 @@ const SidebarLeft = (props: SidebarLeftType) => {
           }}
         >
           <DatePicker inline onChange={(date) => calendarApi.gotoDate(date)} />
-        </DatePickerWrapper>
+        </DatePickerWrapper> */}
         <Divider sx={{ width: "100%", m: "0 !important" }} />
         <Box
           sx={{
@@ -139,7 +139,7 @@ const SidebarLeft = (props: SidebarLeftType) => {
             variant="body2"
             sx={{ mb: 2, color: "text.disabled", textTransform: "uppercase" }}
           >
-            Filters
+            درمان گر ها
           </Typography>
           <FormControlLabel
             label="View All"

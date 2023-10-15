@@ -1,14 +1,16 @@
 import { ArrowForwardIos } from "@mui/icons-material";
 import { Button, Card, CardContent, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+
 import issueImage from "../../assets/issue.png";
 import resultImage from "../../assets/result.png";
 import conversationImage from "../../assets/conversation.png";
 import reputationImage from "../../assets/reputation.png";
+import { useRouter } from "next/router";
 const TestResult = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
+
   const onClickBack = () => {
-    navigate(-3);
+    router.replace("/tests");
   };
 
   return (
@@ -28,10 +30,10 @@ const TestResult = () => {
         }}
       >
         <Button
-          variant='text'
+          variant="text"
           sx={{ color: "white" }}
           onClick={() => onClickBack()}
-          size='small'
+          size="small"
         >
           <ArrowForwardIos />
         </Button>
@@ -51,11 +53,7 @@ const TestResult = () => {
               padding: "8px",
             }}
           >
-            <img
-              src={issueImage}
-              style={{ width: "54px" }}
-              alt='issue'
-            />
+            <img src={issueImage} style={{ width: "54px" }} alt="issue" />
 
             <Typography sx={{ fontWeight: "bold" }}>
               براساس بررسی و نتیجه تست شما، پیشنهاد می کنیم که با مشاور صحبت
@@ -72,21 +70,17 @@ const TestResult = () => {
         >
           <CardContent sx={{ paddingBottom: "0px" }}>
             <Typography
-              variant='h6'
+              variant="h6"
               sx={{
                 fontWeight: "bold",
                 display: "flex",
                 alignItems: "center",
               }}
             >
-              <img
-                src={resultImage}
-                alt='result'
-                style={{ width: "32px" }}
-              />
+              <img src={resultImage} alt="result" style={{ width: "32px" }} />
               نتیجه کلی
             </Typography>
-            <Typography variant='body2'>
+            <Typography variant="body2">
               طرحواره رهاشدگی یعنی اینکه فرد إحساس می کند که همه او را ترک می
               کنند و او همیشه تنهاست. افراد مبتلا به این نوع طرحواره دائم
               ارتباطات خود رابا دیگران بر سر موضوعات کم اهمیت قطع می کنند.
@@ -104,7 +98,7 @@ const TestResult = () => {
         >
           <CardContent sx={{ paddingBottom: "0px" }}>
             <Typography
-              variant='h6'
+              variant="h6"
               sx={{
                 fontWeight: "bold",
                 display: "flex",
@@ -113,12 +107,12 @@ const TestResult = () => {
             >
               <img
                 src={reputationImage}
-                alt='reputation'
+                alt="reputation"
                 style={{ width: "32px" }}
               />
               تاثیر بر زندگی و روابط کاری
             </Typography>
-            <Typography variant='body2'>
+            <Typography variant="body2">
               طرحواره رهاشدگی یعنی اینکه فرد إحساس می کند که همه او را ترک می
               کنند و او همیشه تنهاست. افراد مبتلا به این نوع طرحواره دائم
               ارتباطات خود رابا دیگران بر سر موضوعات کم اهمیت قطع می کنند.
@@ -136,7 +130,7 @@ const TestResult = () => {
         >
           <CardContent sx={{ paddingBottom: "0px" }}>
             <Typography
-              variant='h6'
+              variant="h6"
               sx={{
                 fontWeight: "bold",
                 display: "flex",
@@ -145,12 +139,12 @@ const TestResult = () => {
             >
               <img
                 src={conversationImage}
-                alt='conversation'
+                alt="conversation"
                 style={{ width: "32px" }}
               />
               تاثیر بر روابط خانوادگی و دوستانه
             </Typography>
-            <Typography variant='body2'>
+            <Typography variant="body2">
               طرحواره رهاشدگی یعنی اینکه فرد إحساس می کند که همه او را ترک می
               کنند و او همیشه تنهاست. افراد مبتلا به این نوع طرحواره دائم
               ارتباطات خود رابا دیگران بر سر موضوعات کم اهمیت قطع می کنند.

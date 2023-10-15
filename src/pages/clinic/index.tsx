@@ -1,15 +1,16 @@
+import { PrivatePageLayout } from "@/components/layout/PrivatePageLayout";
 import { EventSeat, NavigateBefore } from "@mui/icons-material";
 import { Card, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 
 const Clinic = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const onNewAppointmentClick = () => {
-    navigate("new-appointment");
+    router.push("clinic/new-appointment");
   };
 
   return (
-    <div>
+    <PrivatePageLayout showBackButton={true}>
       <Card
         onClick={onNewAppointmentClick}
         style={{
@@ -33,7 +34,7 @@ const Clinic = () => {
           <NavigateBefore />
         </div>
       </Card>
-    </div>
+    </PrivatePageLayout>
   );
 };
 

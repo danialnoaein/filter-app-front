@@ -1,0 +1,14 @@
+@import url("./buttons.css");
+@import url("./shimmer.css");
+@import url("./toast.css");
+@layer utilities {
+  .ltr {
+    direction: ltr;
+  }
+  .rtl {
+    direction: rtl;
+  }
+}
+body {
+  direction: rtl;
+}

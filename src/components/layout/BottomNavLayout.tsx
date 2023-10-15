@@ -4,12 +4,12 @@ import {
   BottomNavigationAction,
   Typography,
 } from "@mui/material";
+import { useRouter } from "next/router";
 import { useState } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
 
-export const BottomNavLayout = () => {
+export const BottomNavLayout = ({ children }: any) => {
   const [tab, setTab] = useState(0);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   return (
     <div style={{ padding: "56px 0" }}>
@@ -29,9 +29,7 @@ export const BottomNavLayout = () => {
       >
         <Typography style={{ marginRight: "8px" }}>فیلتر</Typography>
       </div>
-      <div style={{ padding: "8px" }}>
-        <Outlet />
-      </div>
+      <div style={{ padding: "8px" }}>{children}</div>
       <div style={{ position: "fixed", bottom: "0", width: "100%" }}>
         <BottomNavigation
           style={{ borderTop: "1px solid #E1E1E1" }}
@@ -39,27 +37,27 @@ export const BottomNavLayout = () => {
           value={tab}
           onChange={(_event, newValue) => {
             setTab(newValue);
-            navigate("/");
+            router.push("/");
           }}
         >
           <BottomNavigationAction
             label="خانه"
-            onClick={() => navigate("/")}
+            onClick={() => router.push("/")}
             icon={<Apps />}
           />
           <BottomNavigationAction
             label="تست ها"
-            onClick={() => navigate("/tests")}
+            onClick={() => router.push("/tests")}
             icon={<QuizOutlined />}
           />
           <BottomNavigationAction
             label="کلینیک"
-            onClick={() => navigate("/clinic")}
+            onClick={() => router.push("/clinic")}
             icon={<Apartment />}
           />
           <BottomNavigationAction
             label="پروفایل"
-            onClick={() => navigate("/profile")}
+            onClick={() => router.push("/profile")}
             icon={<AccountBox />}
           />
         </BottomNavigation>

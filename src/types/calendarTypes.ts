@@ -10,21 +10,15 @@ export type ThemeColor =
   | "info"
   | "success";
 
-export type CalendarFiltersType =
-  | "Personal"
-  | "Business"
-  | "Family"
-  | "Holiday"
-  | "ETC";
+export type CalendarFiltersType = "Keivan" | "Arman" | "Dana" | "Dan";
 
 export type EventDateType = Date | null | undefined;
 
 export type CalendarColors = {
-  ETC: ThemeColor;
-  Family: ThemeColor;
-  Holiday: ThemeColor;
-  Personal: ThemeColor;
-  Business: ThemeColor;
+  Keivan: ThemeColor;
+  Arman: ThemeColor;
+  Dana: ThemeColor;
+  Dan: ThemeColor;
 };
 
 export type EventType = {

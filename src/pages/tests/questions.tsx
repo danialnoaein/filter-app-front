@@ -11,15 +11,18 @@ import {
   RadioGroup,
   Typography,
 } from "@mui/material";
+import { useParams } from "next/navigation";
+import { useRouter } from "next/router";
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
 
 const Questions = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const params = useParams();
   const onClickBack = () => {
-    navigate(-1);
+    router.back();
   };
+  const onClickStartTest = () => {};
+
   const [value, setValue] = useState("");
 
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,7 +33,8 @@ const Questions = () => {
     event.preventDefault();
 
     console.log("NEXT QUESTION");
-    navigate(`/test/${params.id}/result`);
+
+    router.push(`/test/${params.id}/result`);
   };
 
   return (
@@ -50,10 +54,10 @@ const Questions = () => {
         }}
       >
         <Button
-          variant='text'
+          variant="text"
           sx={{ color: "white" }}
           onClick={() => onClickBack()}
-          size='small'
+          size="small"
         >
           <ArrowForwardIos />
         </Button>
@@ -63,15 +67,12 @@ const Questions = () => {
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <Box sx={{ minWidth: 20 }}>
             <Typography
-              variant='body2'
-              color='text.secondary'
+              variant="body2"
+              color="text.secondary"
             >{`3/60`}</Typography>
           </Box>
           <Box sx={{ width: "100%", mr: 1 }}>
-            <LinearProgress
-              variant='determinate'
-              value={20}
-            />
+            <LinearProgress variant="determinate" value={20} />
           </Box>
         </Box>
         <Card
@@ -81,7 +82,7 @@ const Questions = () => {
           }}
         >
           <CardContent sx={{ paddingBottom: "0px" }}>
-            <Typography variant='body2'>
+            <Typography variant="body2">
               طرحواره رهاشدگی یعنی اینکه فرد إحساس می کند که همه او را ترک می
               کنند و او همیشه تنهاست. افراد مبتلا به این نوع طرحواره دائم
               ارتباطات خود رابا دیگران بر سر موضوعات کم اهمیت قطع می کنند.
@@ -92,17 +93,17 @@ const Questions = () => {
         </Card>
 
         <form onSubmit={handleSubmit}>
-          <FormControl variant='standard'>
+          <FormControl variant="standard">
             <RadioGroup
-              aria-labelledby='demo-error-radios'
-              name='quiz'
+              aria-labelledby="demo-error-radios"
+              name="quiz"
               value={value}
               onChange={handleRadioChange}
             >
               <FormControlLabel
-                value='1'
+                value="1"
                 control={<Radio />}
-                label='جواب ۱'
+                label="جواب ۱"
                 sx={{
                   background: "white",
                   border: "1px solid rgba(47, 43, 61, 0.16)",
@@ -112,9 +113,9 @@ const Questions = () => {
                 }}
               />
               <FormControlLabel
-                value='2'
+                value="2"
                 control={<Radio />}
-                label='جواب ۲'
+                label="جواب ۲"
                 sx={{
                   background: "white",
                   border: "1px solid rgba(47, 43, 61, 0.16)",
@@ -127,11 +128,11 @@ const Questions = () => {
           </FormControl>
 
           <Button
-            type='submit'
-            variant='contained'
-            color='success'
+            type="submit"
+            variant="contained"
+            color="success"
             sx={{ marginTop: "8px", width: 1 }}
-            size='small'
+            size="small"
           >
             ثبت
           </Button>

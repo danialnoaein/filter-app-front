@@ -170,18 +170,18 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
     store.selectedEvent,
   ]);
 
-  const PickersComponent = forwardRef(({ ...props }: PickerProps, ref) => {
-    return (
-      <TextField
-        inputRef={ref}
-        fullWidth
-        {...props}
-        label={props.label || ""}
-        sx={{ width: "100%" }}
-        error={props.error}
-      />
-    );
-  });
+  // const PickersComponent = forwardRef(({ ...props }: PickerProps, ref) => {
+  //   return (
+  //     <TextField
+  //       inputRef={ref}
+  //       fullWidth
+  //       {...props}
+  //       label={props.label || ""}
+  //       sx={{ width: "100%" }}
+  //       error={props.error}
+  //     />
+  //   );
+  // });
 
   const RenderSidebarFooter = () => {
     if (
@@ -239,7 +239,7 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
         <Typography variant="h6">
           {store.selectedEvent !== null && store.selectedEvent.title.length
             ? "Update Event"
-            : "Add Event"}
+            : "رزرو وقت"}
         </Typography>
         <Box sx={{ display: "flex", alignItems: "center" }}>
           {store.selectedEvent !== null && store.selectedEvent.title.length ? (
@@ -265,7 +265,7 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
       </Box>
       <Box
         className="sidebar-body"
-        sx={{ p: (theme) => theme.spacing(0, 6, 6) }}
+        sx={{ p: (theme) => theme.spacing(0, 6, 6), display: "none" }}
       >
         <DatePickerWrapper>
           <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
@@ -310,7 +310,7 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
               </Select>
             </FormControl>
             <Box sx={{ mb: 4 }}>
-              <DatePicker
+              {/* <DatePicker
                 selectsStart
                 id="event-start-date"
                 endDate={values.endDate as EventDateType}
@@ -328,10 +328,10 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
                   setValues({ ...values, startDate: new Date(date) })
                 }
                 onSelect={handleStartDate}
-              />
+              /> */}
             </Box>
             <Box sx={{ mb: 4 }}>
-              <DatePicker
+              {/* <DatePicker
                 selectsEnd
                 id="event-end-date"
                 endDate={values.endDate as EventDateType}
@@ -346,7 +346,7 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
                 onChange={(date: Date) =>
                   setValues({ ...values, endDate: new Date(date) })
                 }
-              />
+              /> */}
             </Box>
             <FormControl sx={{ mb: 4 }}>
               <FormControlLabel

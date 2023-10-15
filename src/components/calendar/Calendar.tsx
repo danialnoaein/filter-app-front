@@ -8,6 +8,8 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import bootstrap5Plugin from "@fullcalendar/bootstrap5";
 import interactionPlugin from "@fullcalendar/interaction";
+import faLocale from "@fullcalendar/core/locales/fa";
+
 // ** Third Party Style Import
 
 import { CalendarType } from "../../types/calendarTypes";
@@ -103,16 +105,16 @@ const Calendar = (props: CalendarType) => {
       */
       navLinks: true,
 
-      eventClassNames({ event: calendarEvent }: any) {
-        //@ts-ignore
-        const colorName =
-          calendarsColor[calendarEvent._def.extendedProps.calendar];
+      // eventClassNames({ event: calendarEvent }: any) {
+      //   //@ts-ignore
+      //   const colorName =
+      //     calendarsColor[calendarEvent._def.extendedProps.calendar];
 
-        return [
-          // Background Color
-          `bg-${colorName}`,
-        ];
-      },
+      //   return [
+      //     // Background Color
+      //     `bg-${colorName}`,
+      //   ];
+      // },
 
       eventClick({ event: clickedEvent }: any) {
         dispatch(handleSelectEvent(clickedEvent));
@@ -166,6 +168,7 @@ const Calendar = (props: CalendarType) => {
 
       // Get direction from app state (store)
       direction,
+      locale: faLocale,
     };
 
     // @ts-ignore

@@ -17,14 +17,15 @@ import CalendarWrapper from "../../components/calendar/FullCaendar";
 import SidebarLeft from "../../components/calendar/SidebarLeft";
 import { Box } from "@mui/material";
 import Calendar from "../../components/calendar/Calendar";
+import AddEventSidebar from "@/components/calendar/AddEventSidebar";
+import { PrivatePageLayout } from "@/components/layout/PrivatePageLayout";
 
 // // ** CalendarColors
 const calendarsColor: CalendarColors = {
-  Personal: "error",
-  Business: "primary",
-  Family: "warning",
-  Holiday: "success",
-  ETC: "info",
+  Keivan: "error",
+  Arman: "primary",
+  Dana: "warning",
+  Dan: "success",
 };
 
 const NewAppointment = () => {
@@ -51,16 +52,17 @@ const NewAppointment = () => {
     setAddEventSidebarOpen(!addEventSidebarOpen);
 
   return (
-    <CalendarWrapper
-      className="app-calendar"
-      sx={{
-        boxShadow: 0,
-        ...{
-          border: (theme) => `1px solid ${theme.palette.divider}`,
-        },
-      }}
-    >
-      {/* <SidebarLeft
+    <PrivatePageLayout showBackButton={true}>
+      <CalendarWrapper
+        className="app-calendar"
+        sx={{
+          boxShadow: 0,
+          ...{
+            border: (theme) => `1px solid ${theme.palette.divider}`,
+          },
+        }}
+      >
+        <SidebarLeft
           store={store}
           mdAbove={mdAbove}
           dispatch={dispatch}
@@ -73,46 +75,47 @@ const NewAppointment = () => {
           handleCalendarsUpdate={handleCalendarsUpdate}
           handleLeftSidebarToggle={handleLeftSidebarToggle}
           handleAddEventSidebarToggle={handleAddEventSidebarToggle}
-        /> */}
-      <Box
-        sx={{
-          p: 6,
-          pb: 0,
-          flexGrow: 1,
-          borderRadius: 1,
-          boxShadow: "none",
-          backgroundColor: "background.paper",
-          ...(mdAbove
-            ? { borderTopLeftRadius: 0, borderBottomLeftRadius: 0 }
-            : {}),
-        }}
-      >
-        <Calendar
+        />
+        <Box
+          sx={{
+            p: 6,
+            pb: 0,
+            flexGrow: 1,
+            borderRadius: 1,
+            boxShadow: "none",
+            backgroundColor: "background.paper",
+            ...(mdAbove
+              ? { borderTopLeftRadius: 0, borderBottomLeftRadius: 0 }
+              : {}),
+          }}
+        >
+          <Calendar
+            store={store}
+            dispatch={dispatch}
+            direction={direction}
+            updateEvent={updateEvent}
+            calendarApi={calendarApi}
+            calendarsColor={calendarsColor}
+            setCalendarApi={setCalendarApi}
+            handleSelectEvent={handleSelectEvent}
+            handleLeftSidebarToggle={handleLeftSidebarToggle}
+            handleAddEventSidebarToggle={handleAddEventSidebarToggle}
+          />
+        </Box>
+        <AddEventSidebar
           store={store}
           dispatch={dispatch}
-          direction={direction}
+          addEvent={addEvent}
           updateEvent={updateEvent}
+          deleteEvent={deleteEvent}
           calendarApi={calendarApi}
-          calendarsColor={calendarsColor}
-          setCalendarApi={setCalendarApi}
+          drawerWidth={addEventSidebarWidth}
           handleSelectEvent={handleSelectEvent}
-          handleLeftSidebarToggle={handleLeftSidebarToggle}
+          addEventSidebarOpen={addEventSidebarOpen}
           handleAddEventSidebarToggle={handleAddEventSidebarToggle}
         />
-      </Box>
-      {/* <AddEventSidebar
-        store={store}
-        dispatch={dispatch}
-        addEvent={addEvent}
-        updateEvent={updateEvent}
-        deleteEvent={deleteEvent}
-        calendarApi={calendarApi}
-        drawerWidth={addEventSidebarWidth}
-        handleSelectEvent={handleSelectEvent}
-        addEventSidebarOpen={addEventSidebarOpen}
-        handleAddEventSidebarToggle={handleAddEventSidebarToggle}
-      /> */}
-    </CalendarWrapper>
+      </CalendarWrapper>
+    </PrivatePageLayout>
   );
 };
 

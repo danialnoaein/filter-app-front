@@ -34,9 +34,7 @@ export const addEvent = createAsyncThunk(
         event,
       },
     });
-    await dispatch(
-      fetchEvents(["Personal", "Business", "Family", "Holiday", "ETC"])
-    );
+    await dispatch(fetchEvents(["Keivan", "Arman", "Dana", "Dan"]));
 
     return response.data.event;
   }
@@ -51,9 +49,7 @@ export const updateEvent = createAsyncThunk(
         event,
       },
     });
-    await dispatch(
-      fetchEvents(["Personal", "Business", "Family", "Holiday", "ETC"])
-    );
+    await dispatch(fetchEvents(["Keivan", "Arman", "Dana", "Dan"]));
 
     return response.data.event;
   }
@@ -66,9 +62,7 @@ export const deleteEvent = createAsyncThunk(
     const response = await axios.delete("/apps/calendar/remove-event", {
       params: { id },
     });
-    await dispatch(
-      fetchEvents(["Personal", "Business", "Family", "Holiday", "ETC"])
-    );
+    await dispatch(fetchEvents(["Keivan", "Arman", "Dana", "Dan"]));
 
     return response.data;
   }
@@ -79,7 +73,7 @@ export const appCalendarSlice = createSlice({
   initialState: {
     events: [],
     selectedEvent: null,
-    selectedCalendars: ["Personal", "Business", "Family", "Holiday", "ETC"],
+    selectedCalendars: ["Keivan", "Arman", "Dana", "Dan"],
   },
   reducers: {
     handleSelectEvent: (state, action) => {
@@ -101,13 +95,7 @@ export const appCalendarSlice = createSlice({
     handleAllCalendars: (state, action) => {
       const value = action.payload;
       if (value === true) {
-        state.selectedCalendars = [
-          "Personal",
-          "Business",
-          "Family",
-          "Holiday",
-          "ETC",
-        ];
+        state.selectedCalendars = ["Keivan", "Arman", "Dana", "Dan"];
       } else {
         state.selectedCalendars = [];
       }

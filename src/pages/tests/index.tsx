@@ -7,7 +7,7 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 
 interface ITest {
   id: number;
@@ -80,18 +80,15 @@ const data: ITestsSection[] = [
   },
 ];
 const Tests = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const onClickGoToTest = (id: number) => {
-    navigate(`/test/${id}`);
+    router.push(`/test/${id}`);
   };
   return (
     <>
       <div style={{ marginBottom: "8px" }}>
-        <Typography
-          variant='h5'
-          sx={{ fontWeight: "bold" }}
-        >
+        <Typography variant="h5" sx={{ fontWeight: "bold" }}>
           تست های سلامت روان
         </Typography>
         <Typography>اول خودت رو بشناس، بعد تصمیم بگیر </Typography>
@@ -120,10 +117,7 @@ const Tests = () => {
                     border: "1px solid rgba(47, 43, 61, 0.16)",
                   }}
                 >
-                  <CardMedia
-                    sx={{ height: 140 }}
-                    image={test.thumb}
-                  />
+                  <CardMedia sx={{ height: 140 }} image={test.thumb} />
 
                   <div
                     style={{
@@ -146,17 +140,14 @@ const Tests = () => {
                     <span>۲ دقیقه</span>
                   </div>
                   <CardContent sx={{ paddingBottom: "0px" }}>
-                    <Typography
-                      variant='body2'
-                      sx={{ fontWeight: "bold" }}
-                    >
+                    <Typography variant="body2" sx={{ fontWeight: "bold" }}>
                       {test.title}
                     </Typography>
                   </CardContent>
                   <CardActions>
                     <Button
                       onClick={() => onClickGoToTest(test.id)}
-                      size='small'
+                      size="small"
                     >
                       شروع
                     </Button>
