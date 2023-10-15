@@ -73,10 +73,9 @@ const Home = () => {
               variant="h2"
               style={{ fontSize: "1.6rem", fontWeight: "bold" }}
             >
-              " حتی تاریک ترین شب هم به پایان می رسد و خورشید دوباره طلوع می
-              کند. "
+              &quot; حتی تاریک ترین شب هم به پایان می رسد و خورشید دوباره طلوع
+              می کند. &ldquo;
             </Typography>
-
             <Typography
               style={{
                 textAlign: "left",

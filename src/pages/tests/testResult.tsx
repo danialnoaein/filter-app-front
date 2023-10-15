@@ -6,6 +6,7 @@ import resultImage from "../../assets/result.png";
 import conversationImage from "../../assets/conversation.png";
 import reputationImage from "../../assets/reputation.png";
 import { useRouter } from "next/router";
+import Image from "next/image";
 const TestResult = () => {
   const router = useRouter();
 
@@ -53,7 +54,7 @@ const TestResult = () => {
               padding: "8px",
             }}
           >
-            <img src={issueImage} style={{ width: "54px" }} alt="issue" />
+            <Image alt={"Issue"} height={54} width={54} src={issueImage} />
 
             <Typography sx={{ fontWeight: "bold" }}>
               براساس بررسی و نتیجه تست شما، پیشنهاد می کنیم که با مشاور صحبت
@@ -77,7 +78,7 @@ const TestResult = () => {
                 alignItems: "center",
               }}
             >
-              <img src={resultImage} alt="result" style={{ width: "32px" }} />
+              <Image width={32} src={resultImage} alt="result" />
               نتیجه کلی
             </Typography>
             <Typography variant="body2">
@@ -105,11 +106,7 @@ const TestResult = () => {
                 alignItems: "center",
               }}
             >
-              <img
-                src={reputationImage}
-                alt="reputation"
-                style={{ width: "32px" }}
-              />
+              <Image src={reputationImage} alt="reputation" width={32} />
               تاثیر بر زندگی و روابط کاری
             </Typography>
             <Typography variant="body2">
@@ -137,11 +134,7 @@ const TestResult = () => {
                 alignItems: "center",
               }}
             >
-              <img
-                src={conversationImage}
-                alt="conversation"
-                style={{ width: "32px" }}
-              />
+              <Image src={conversationImage} alt="conversation" width={32} />
               تاثیر بر روابط خانوادگی و دوستانه
             </Typography>
             <Typography variant="body2">

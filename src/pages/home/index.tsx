@@ -7,6 +7,7 @@ import {
 } from "@mui/material";
 import ideaImage from "../../assets/idea.png";
 import { EventSeat, NavigateBefore, Share, Warning } from "@mui/icons-material";
+import Image from "next/image";
 const Home = () => {
   const onClickShare = () => {
     if (navigator.share) {
@@ -39,10 +40,7 @@ const Home = () => {
             لطفا ثبت نام خود را کامل کنید
           </Typography>
 
-          <Button
-            color='inherit'
-            size='small'
-          >
+          <Button color="inherit" size="small">
             ادامه
           </Button>
         </div>
@@ -55,11 +53,13 @@ const Home = () => {
         }}
       >
         <div style={{ position: "relative" }}>
-          <img
+          <Image
             src={ideaImage}
+            height={172}
+            alt={"Idea"}
+            width={172}
             style={{
               position: "absolute",
-              width: "172px",
               opacity: "0.4",
               zIndex: "0",
               left: "-56px",
@@ -68,16 +68,16 @@ const Home = () => {
         </div>
         <CardContent sx={{ paddingBottom: "0px" }}>
           <Typography
-            variant='h2'
+            variant="h2"
             style={{ fontSize: "1.6rem", fontWeight: "bold" }}
           >
-            " حتی تاریک ترین شب هم به پایان می رسد و خورشید دوباره طلوع می کند.
-            "
+            &quot; حتی تاریک ترین شب هم به پایان می رسد و خورشید دوباره طلوع می
+            کند. &ldquo;
           </Typography>
 
           <Typography
             style={{ textAlign: "left", fontStyle: "italic", color: "#616161" }}
-            variant='body2'
+            variant="body2"
           >
             - ویکتور هوگو
           </Typography>
