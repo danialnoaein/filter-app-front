@@ -241,8 +241,12 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
             ? "Update Event"
             : "رزرو وقت"}
         </Typography>
+        <IconButton size="small" onClick={handleSidebarClose} sx={{}}>
+          <IconifyIcon icon="tabler:x" fontSize="1.25rem" />
+        </IconButton>
+
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          {store.selectedEvent !== null && store.selectedEvent.title.length ? (
+          {/* {store.selectedEvent !== null && store.selectedEvent.title.length ? (
             <IconButton
               size="small"
               onClick={handleDeleteEvent}
@@ -254,13 +258,9 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
               <IconifyIcon icon="tabler:trash" fontSize="1.25rem" />
             </IconButton>
           ) : null}
-          <IconButton
-            size="small"
-            onClick={handleSidebarClose}
-            sx={{ color: "text.primary" }}
-          >
+          <IconButton size="small" onClick={handleSidebarClose} sx={{}}>
             <IconifyIcon icon="tabler:x" fontSize="1.25rem" />
-          </IconButton>
+          </IconButton> */}
         </Box>
       </Box>
       <Box

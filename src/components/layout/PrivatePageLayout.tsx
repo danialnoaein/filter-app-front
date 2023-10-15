@@ -17,7 +17,7 @@ export const PrivatePageLayout = ({
     router.back();
   };
   return (
-    <div style={{ padding: "56px 0" }}>
+    <div style={{ padding: "56px 0 0" }}>
       <div
         style={{
           position: "fixed",
