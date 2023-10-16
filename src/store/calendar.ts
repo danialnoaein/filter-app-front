@@ -11,17 +11,67 @@ import {
 
 // ** Types
 
+const date = new Date();
+const nextDay = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+const nextMonth =
+  date.getMonth() === 11
+    ? new Date(date.getFullYear() + 1, 0, 1)
+    : new Date(date.getFullYear(), date.getMonth() + 1, 1);
+
+const prevMonth =
+  date.getMonth() === 11
+    ? new Date(date.getFullYear() - 1, 0, 1)
+    : new Date(date.getFullYear(), date.getMonth() - 1, 1);
+
+const data: { events: EventType[] } = {
+  events: [
+    {
+      id: 7,
+      url: "",
+      title: "   دکتر کیوان یه ساعتی",
+      start: new Date(date.getFullYear(), date.getMonth() + 1, -12, 12, 0, 0),
+      end: new Date(date.getFullYear(), date.getMonth() + 1, -12, 13, 0, 0),
+      allDay: false,
+      extendedProps: {
+        calendar: "Keivan",
+      },
+    },
+    {
+      id: 8,
+      url: "",
+      title: "دکتر آرمان نیم ساعتی",
+      start: new Date(date.getFullYear(), date.getMonth() + 1, -12, 14, 0, 0),
+      end: new Date(date.getFullYear(), date.getMonth() + 1, -12, 14, 30, 0),
+      allDay: false,
+      extendedProps: {
+        calendar: "Arman",
+      },
+    },
+    {
+      id: 7,
+      url: "",
+      title: "   دکتر کیوان یه ربعی",
+      start: new Date(date.getFullYear(), date.getMonth() + 1, -12, 14, 0, 0),
+      end: new Date(date.getFullYear(), date.getMonth() + 1, -12, 14, 15, 0),
+      allDay: false,
+      extendedProps: {
+        calendar: "Keivan",
+      },
+    },
+  ],
+};
+
 // ** Fetch Events
 export const fetchEvents = createAsyncThunk(
   "appCalendar/fetchEvents",
   async (calendars: CalendarFiltersType[]) => {
-    const response = await axios.get("/apps/calendar/events", {
-      params: {
-        calendars,
-      },
-    });
+    // const response = await axios.get("/apps/calendar/events", {
+    //   params: {
+    //     calendars,
+    //   },
+    // });
 
-    return response.data;
+    return [];
   }
 );
 
@@ -71,7 +121,7 @@ export const deleteEvent = createAsyncThunk(
 export const appCalendarSlice = createSlice({
   name: "appCalendar",
   initialState: {
-    events: [],
+    events: data.events,
     selectedEvent: null,
     selectedCalendars: ["Keivan", "Arman", "Dana", "Dan"],
   },
@@ -101,11 +151,11 @@ export const appCalendarSlice = createSlice({
       }
     },
   },
-  extraReducers: (builder) => {
-    builder.addCase(fetchEvents.fulfilled, (state, action) => {
-      state.events = action.payload;
-    });
-  },
+  // extraReducers: (builder) => {
+  //   builder.addCase(fetchEvents.fulfilled, (state, action) => {
+  //     state.events = action.payload;
+  //   });
+  // },
 });
 export const { handleSelectEvent, handleCalendarsUpdate, handleAllCalendars } =
   appCalendarSlice.actions;
