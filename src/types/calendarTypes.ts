@@ -10,15 +10,13 @@ export type ThemeColor =
   | "info"
   | "success";
 
-export type CalendarFiltersType = "Keivan" | "Arman" | "Dana" | "Dan";
+export type CalendarFiltersType = "Active" | "Reserved";
 
 export type EventDateType = Date | null | undefined;
 
 export type CalendarColors = {
-  Keivan: ThemeColor;
-  Arman: ThemeColor;
-  Dana: ThemeColor;
-  Dan: ThemeColor;
+  Active: ThemeColor;
+  Reserved: ThemeColor;
 };
 
 export type EventType = {
@@ -29,6 +27,7 @@ export type EventType = {
   end: Date | string;
   start: Date | string;
   extendedProps: {
+    sessionStatus: "Active" | "Reserved";
     location?: string;
     calendar?: string;
     description?: string;

@@ -28,12 +28,12 @@ const data: { events: EventType[] } = {
     {
       id: 7,
       url: "",
-      title: "   دکتر کیوان یه ساعتی",
+      title: "دکتر کیوان یه ساعتی ساعتی ساعتی",
       start: new Date(date.getFullYear(), date.getMonth() + 1, -12, 12, 0, 0),
       end: new Date(date.getFullYear(), date.getMonth() + 1, -12, 13, 0, 0),
       allDay: false,
       extendedProps: {
-        calendar: "Keivan",
+        sessionStatus: "Active",
       },
     },
     {
@@ -44,18 +44,18 @@ const data: { events: EventType[] } = {
       end: new Date(date.getFullYear(), date.getMonth() + 1, -12, 14, 30, 0),
       allDay: false,
       extendedProps: {
-        calendar: "Arman",
+        sessionStatus: "Reserved",
       },
     },
     {
       id: 7,
       url: "",
-      title: "   دکتر کیوان یه ربعی",
-      start: new Date(date.getFullYear(), date.getMonth() + 1, -12, 14, 0, 0),
-      end: new Date(date.getFullYear(), date.getMonth() + 1, -12, 14, 15, 0),
+      title: "دکتر کیوان یه ربعی",
+      start: new Date(date.getFullYear(), date.getMonth() + 1, -12, 15, 0, 0),
+      end: new Date(date.getFullYear(), date.getMonth() + 1, -12, 15, 30, 0),
       allDay: false,
       extendedProps: {
-        calendar: "Keivan",
+        sessionStatus: "Active",
       },
     },
   ],
@@ -84,7 +84,7 @@ export const addEvent = createAsyncThunk(
         event,
       },
     });
-    await dispatch(fetchEvents(["Keivan", "Arman", "Dana", "Dan"]));
+    await dispatch(fetchEvents(["Active", "Reserved"]));
 
     return response.data.event;
   }
@@ -99,7 +99,7 @@ export const updateEvent = createAsyncThunk(
         event,
       },
     });
-    await dispatch(fetchEvents(["Keivan", "Arman", "Dana", "Dan"]));
+    await dispatch(fetchEvents(["Active", "Reserved"]));
 
     return response.data.event;
   }
@@ -112,7 +112,7 @@ export const deleteEvent = createAsyncThunk(
     const response = await axios.delete("/apps/calendar/remove-event", {
       params: { id },
     });
-    await dispatch(fetchEvents(["Keivan", "Arman", "Dana", "Dan"]));
+    await dispatch(fetchEvents(["Active", "Reserved"]));
 
     return response.data;
   }
@@ -123,7 +123,7 @@ export const appCalendarSlice = createSlice({
   initialState: {
     events: data.events,
     selectedEvent: null,
-    selectedCalendars: ["Keivan", "Arman", "Dana", "Dan"],
+    selectedCalendars: ["Active", "Reserved"],
   },
   reducers: {
     handleSelectEvent: (state, action) => {
@@ -145,7 +145,7 @@ export const appCalendarSlice = createSlice({
     handleAllCalendars: (state, action) => {
       const value = action.payload;
       if (value === true) {
-        state.selectedCalendars = ["Keivan", "Arman", "Dana", "Dan"];
+        state.selectedCalendars = ["Active", "Reserved"];
       } else {
         state.selectedCalendars = [];
       }

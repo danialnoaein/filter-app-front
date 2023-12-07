@@ -22,10 +22,8 @@ import { PrivatePageLayout } from "@/components/layout/PrivatePageLayout";
 
 // // ** CalendarColors
 const calendarsColor: CalendarColors = {
-  Keivan: "error",
-  Arman: "primary",
-  Dana: "warning",
-  Dan: "success",
+  Active: "success",
+  Reserved: "warning",
 };
 
 const NewAppointment = () => {
@@ -54,7 +52,7 @@ const NewAppointment = () => {
   return (
     <PrivatePageLayout showBackButton={true}>
       <CalendarWrapper
-        className="app-calendar"
+        className='app-calendar'
         sx={{
           boxShadow: 0,
           ...{
@@ -62,7 +60,7 @@ const NewAppointment = () => {
           },
         }}
       >
-        <SidebarLeft
+        {/* <SidebarLeft
           store={store}
           mdAbove={mdAbove}
           dispatch={dispatch}
@@ -75,7 +73,7 @@ const NewAppointment = () => {
           handleCalendarsUpdate={handleCalendarsUpdate}
           handleLeftSidebarToggle={handleLeftSidebarToggle}
           handleAddEventSidebarToggle={handleAddEventSidebarToggle}
-        />
+        /> */}
         <Box
           sx={{
             p: 6,

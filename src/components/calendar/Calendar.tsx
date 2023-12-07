@@ -97,7 +97,7 @@ const Calendar = (props: CalendarType) => {
         Max number of events within a given day
         ? Docs: https://fullcalendar.io/docs/dayMaxEvents
       */
-      dayMaxEvents: 2,
+      dayMaxEvents: 3,
 
       /*
         Determines if day names and week names are clickable
@@ -105,16 +105,16 @@ const Calendar = (props: CalendarType) => {
       */
       navLinks: true,
 
-      // eventClassNames({ event: calendarEvent }: any) {
-      //   //@ts-ignore
-      //   const colorName =
-      //     calendarsColor[calendarEvent._def.extendedProps.calendar];
+      eventClassNames({ event: calendarEvent }: any) {
+        const colorName =
+          //@ts-ignore
+          calendarsColor[calendarEvent._def.extendedProps.sessionStatus];
 
-      //   return [
-      //     // Background Color
-      //     `bg-${colorName}`,
-      //   ];
-      // },
+        return [
+          // Background Color
+          `bg-${colorName}`,
+        ];
+      },
 
       eventClick({ event: clickedEvent }: any) {
         dispatch(handleSelectEvent(clickedEvent));
