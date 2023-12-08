@@ -26,6 +26,28 @@ const prevMonth =
 const data: { events: EventType[] } = {
   events: [
     {
+      id: 6,
+      url: "",
+      title: "دکتر کیوان ی",
+      start: new Date(date.getFullYear(), date.getMonth() + 1, -12, 9, 0, 0),
+      end: new Date(date.getFullYear(), date.getMonth() + 1, -12, 10, 15, 0),
+      allDay: false,
+      extendedProps: {
+        sessionStatus: "Active",
+      },
+    },
+    {
+      id: 5,
+      url: "",
+      title: "دکتر کیوان dddی",
+      start: new Date(date.getFullYear(), date.getMonth() + 1, -12, 10, 0, 0),
+      end: new Date(date.getFullYear(), date.getMonth() + 1, -12, 11, 0, 0),
+      allDay: false,
+      extendedProps: {
+        sessionStatus: "Active",
+      },
+    },
+    {
       id: 7,
       url: "",
       title: "دکتر کیوان یه ساعتی ساعتی ساعتی",

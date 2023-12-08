@@ -14,6 +14,7 @@ interface AuthContextType {
   user: User | null;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<void>;
+  signUp: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
 }
 
@@ -48,6 +49,23 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         JSON.stringify(data.session.access_token)
       );
       sessionStorage.setItem("user", JSON.stringify(data.user));
+    } catch (error) {
+      console.error("Error signing in:", error);
+    }
+  };
+
+  const signUp = async (email: string, password: string) => {
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+      });
+
+      if (error) {
+        throw new Error(error.message);
+      }
+
+      console.log({ data });
     } catch (error) {
       console.error("Error signing in:", error);
     }
@@ -92,6 +110,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     user,
     loading,
     signIn,
+    signUp,
     signOut,
   };
 
