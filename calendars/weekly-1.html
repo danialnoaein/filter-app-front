@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week Calendar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      direction: rtl;
+    }
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .day {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="calendar" id="calendar"></div>
+
+<script>
+  function buildWeekCalendar() {
+    const calendar = document.getElementById("calendar");
+
+    // Get the current date
+    const currentDate = new Date("2023/12/20");
+
+    // Calculate the starting day (Saturday) of the current week
+    const startingDay = new Date(currentDate);
+    startingDay.setDate(currentDate.getDate() - currentDate.getDay() + (currentDate.getDay() === 0 ? -6 : 1));
+    startingDay.setDate(startingDay.getDate() - 2);
+
+    // Build the calendar for the week
+    for (let i = 0; i < 7; i++) {
+      const day = new Date(startingDay);
+      day.setDate(startingDay.getDate() + i);
+
+      const dayElement = document.createElement("div");
+      dayElement.classList.add("day");
+      dayElement.textContent = `${day.toLocaleDateString('fa-IR', { weekday: 'long' })} ${day.toLocaleDateString()} ${day.toLocaleDateString('fa-IR')}`;
+
+      calendar.appendChild(dayElement);
+    }
+  }
+
+  // Build the calendar when the page loads
+  buildWeekCalendar();
+</script>
+
+</body>
+</html>
