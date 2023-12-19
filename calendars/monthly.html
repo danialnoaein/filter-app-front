@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Persian Calendar with Moment.js</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="https://unpkg.com/jalali-moment/dist/jalali-moment.browser.js"></script>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    td:hover {
+      background-color: #f5f5f5;
+      cursor: pointer;
+    }
+
+    caption {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+</table>
+
+
+<div id="calendarr"></div>
+
+
+
+<script>
+  function createCalendar(elem, year, month) {
+
+
+      const firstDay = moment.from(`${year}-${month}-01`, 'fa', 'YYYY-MM-DD').locale('en').format('YYYY/MM/DD');
+      const firstDayDate = new Date(firstDay)
+      const lastDay = moment.from(`${year}-${parseInt(month) === 12 ? 1 :  parseInt(month) + 1 }-01`, 'fa', 'YYYY-MM-DD').locale('en').format('YYYY/MM/DD');
+
+      let lastDayDate = new Date(lastDay);
+      lastDayDate.setDate(lastDayDate.getDate() - 1);
+
+    let table = '<table><tr><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th><th>SU</th></tr><tr>';
+
+
+    for (let i = 0; i < getDay(firstDayDate); i++) {
+      table += '<td></td>';
+    }
+
+    // <td> with actual dates
+    // while (firstDayDate.getMonth() == lastDayDate.getMonth() - 1) {
+    //   table += '<td>' + firstDayDate.getDate() + '</td>';
+
+    //   if (getDay(firstDayDate) % 7 == 6) { // sunday, last day of week - newline
+    //     table += '</tr><tr>';
+    //   }
+
+    //   firstDayDate.setDate(firstDayDate.getDate() + 1);
+    // }
+
+    console.log(getLastDayOfPersianMonth(year, month));
+
+    for (let index = 0; index < getLastDayOfPersianMonth(year, month); index++) {
+      table += '<td>' + (index+1) + '</td>';
+
+      if (getDay(firstDayDate) % 7 == 6) { // sunday, last day of week - newline
+        table += '</tr><tr>';
+      }
+      firstDayDate.setDate(firstDayDate.getDate() + 1);
+    }
+
+    // add spaces after last days of month for the last row
+    // 29 30 31 * * * *
+    // if (getDay(d) != 0) {
+    //   for (let i = getDay(d); i < 7; i++) {
+    //     table += '<td></td>';
+    //   }
+    // }
+
+    // close the table
+    table += '</tr></table>';
+
+    elem.innerHTML = table;
+  }
+
+  function getDay(date) { // get day number from 0 (monday) to 6 (sunday)
+    let day = date.getDay();
+    if (day == 0) day = 7; // make Sunday (0) the last day
+    return day - 1;
+  }
+
+
+  function getLastDayOfPersianMonth(y, m) {
+   if (m >= 1 && m <= 6) {
+      return 31;
+   }
+   else if (m >= 7 && m < 12) {
+      return 30;
+   }
+   else if (m != 12) {
+      alert("Invalid date");
+   }
+   /* Esfand */
+   if (((((((y - ((y > 0) ? 474 : 473)) % 2820) + 474) + 38) * 682) % 2816) < 682) {
+      /* Leap year */
+      return 30;
+   }
+   return 29;
+}
+
+
+  createCalendar(document.getElementById("calendarr"), 1403,1);
+</script>
+
+
+</body>
+</html>
