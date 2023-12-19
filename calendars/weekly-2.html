@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weekly Calendar with Appointments</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      direction: rtl;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Weekly Calendar with Appointments</h2>
+
+  <button onclick="previousWeek()">Previous Week</button>
+  <button onclick="nextWeek()">Next Week</button>
+
+  <table id="calendar">
+    <thead>
+      <tr>
+        <th>Time</th>
+        <th>Sunday</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+        <th>Saturday</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    // Sample JSON object with appointments
+    const appointments = [
+    { day: 1, start: 9, end: 10, title: 'سامان نظری' },
+      { day: 2, start: 14, end: 15, title: '۵ نوبت' },
+      { day: 3, start: 10, end: 12, title: 'پر شده' },
+      { day: 4, start: 9, end: 10, title: 'سامان نظری' },
+      { day: 4, start: 14, end: 15, title: '۵ نوبت' },
+      { day: 4, start: 10, end: 12, title: 'پر شده' },
+      { day: 2, start: 9, end: 10, title: 'سامان نظری' },
+      { day: 3, start: 14, end: 15, title: '۵ نوبت' },
+      { day: 2, start: 10, end: 12, title: 'پر شده' },
+
+      // Add more appointments as needed
+    ];
+
+    // Function to generate the calendar for a given week
+    function generateCalendar(weekStart) {
+      const tableBody = document.querySelector('#calendar tbody');
+      tableBody.innerHTML = '';
+
+      for (let i = 0; i < 24; i++) {
+        const row = document.createElement('tr');
+
+        // Time column
+        const timeCell = document.createElement('td');
+        timeCell.textContent = `${i}:00 - ${i + 1}:00`;
+        row.appendChild(timeCell);
+
+        // Days columns
+        for (let j = 0; j < 7; j++) {
+          const cell = document.createElement('td');
+          const day = weekStart.addDays(j);
+          const appointmentsForDay = getAppointmentsForDay(day, i, i + 1);
+
+          if (appointmentsForDay.length > 0) {
+            // Display appointments for the current day and time slot
+            const appointmentsList = getAppointmentsText(appointmentsForDay);
+            cell.innerHTML = appointmentsList;
+
+            // Set colspan attribute for merged cells
+            const colspan = getAppointmentsColspan(appointmentsForDay);
+            console.log({colspan});
+
+            if (colspan > 1) {
+              cell.setAttribute('rowspan', colspan);
+              for (let k = 1; k < colspan; k++) {
+                row.appendChild(document.createElement('td'));
+              }
+            }
+          }
+
+          row.appendChild(cell);
+        }
+
+        tableBody.appendChild(row);
+      }
+    }
+
+    // Function to get appointments for a specific day and time slot
+    function getAppointmentsForDay(day, startHour, endHour) {
+      return appointments.filter(appointment =>
+        appointment.day === day.getDay() && appointment.start < endHour && appointment.end > startHour
+      );
+    }
+
+    // Function to get text for appointments
+    function getAppointmentsText(appointmentsForDay) {
+      return appointmentsForDay.map(appointment => appointment.title).join('<br>');
+    }
+
+    // Function to get colspan for merged cells
+    function getAppointmentsColspan(appointmentsForDay) {
+      let colspan = 1;
+      let lastEnd = 0;
+
+      for (const appointment of appointmentsForDay) {
+        if (appointment.start < lastEnd) {
+          // Overlapping appointments, increase colspan
+          colspan++;
+        } else {
+          // Non-overlapping appointment, reset colspan
+          colspan = 1;
+        }
+
+        lastEnd = Math.max(lastEnd, appointment.end);
+      }
+
+      return colspan;
+    }
+
+    // Function to navigate to the previous week
+    function previousWeek() {
+      currentWeekStart = currentWeekStart.addDays(-7);
+      generateCalendar(currentWeekStart);
+    }
+
+    // Function to navigate to the next week
+    function nextWeek() {
+      currentWeekStart = currentWeekStart.addDays(7);
+      generateCalendar(currentWeekStart);
+    }
+
+    // Function to add days to a date
+    Date.prototype.addDays = function(days) {
+      const date = new Date(this.valueOf());
+      date.setDate(date.getDate() + days);
+      return date;
+    };
+
+    // Initial setup: Display the current week
+    let currentWeekStart = new Date();
+    currentWeekStart.setDate(currentWeekStart.getDate() - currentWeekStart.getDay()); // Start from the beginning of the current week
+    generateCalendar(currentWeekStart);
+  </script>
+
+</body>
+</html>
